@@ -35,7 +35,6 @@ app.use(express.static(path.join(__dirname, '../../../client/dist')))
 
 
 //routes
-
 app.use('/api/v1/amenities', amenitiesRouter)
 app.use('/api/v1/dubai-developers', dubaiDevelopersRouter)
 app.use('/api/v1/dubai-areas', dubaiAreasRouter)
@@ -46,6 +45,11 @@ app.use('/api/v1/blogs', blogRouter)
 app.use('/api/v1/settings', adminRouter)
 app.use('/api/v1/logs', logRouter)
 app.use('/api/v1/properties', propertyRouter)
+
+app.use('/api/v1', (req: Request, res: Response) => { 
+  res.send('Welcome to the Dubai Properties API')
+
+})
 
 app.use(function (err: any, req: Request, res: Response, next: NextFunction) {
   console.log('This is the invalid field ->', err.fieldName)
